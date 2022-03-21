@@ -21,12 +21,12 @@ public class PessoaServiceImpl implements PessoaService {
     }
 
     @Override
-    public List<Pessoa> listaPessoas() {
+    public List<Pessoa> listarPessoas() {
         return repository.findAll();
     }
 
     @Override
-    public Pessoa listaPessoaId(Long id) {
+    public Pessoa buscarPessoa(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> null);
     }

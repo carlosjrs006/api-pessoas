@@ -8,8 +8,8 @@ public interface PessoaService {
 
      Pessoa criarPessoa(Pessoa pessoa);
 
-     List<Pessoa> listaPessoas();
+     List<Pessoa> listarPessoas();
 
-     Pessoa listaPessoaId(Long id);
+     Pessoa buscarPessoa(Long id);
 
 }
