@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,7 +35,7 @@ public class PessoaController {
 
 
     @PostMapping
-    public ResponseEntity<PessoaDTO> salvar(@RequestBody PessoaFormPostDTO pessoaFormPostDTO) {
+    public ResponseEntity<PessoaDTO> salvar(@RequestBody @Valid PessoaFormPostDTO pessoaFormPostDTO) {
         Pessoa pessoa = pessoaMapper.dtoPostToModel(pessoaFormPostDTO);
         PessoaDTO pessoaDTO = pessoaMapper.modelToDto(pessoaService.criarPessoa(pessoa));
         return new ResponseEntity<PessoaDTO>(pessoaDTO, HttpStatus.CREATED);
