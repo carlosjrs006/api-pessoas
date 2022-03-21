@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/serasa/api/pessoas")
@@ -46,17 +47,25 @@ public class PessoaController {
     public ResponseEntity<List<ItemListPessoaDTO>> buscarTodos() {
 
         List<Pessoa> pessoas = pessoaService.listarPessoas();
-        List<ItemListPessoaDTO> pessoaListDTO = itemListPessoaMapper.modelListToDtoList(pessoas);
-
-        return ResponseEntity.ok(pessoaListDTO);
+        if (pessoas.isEmpty()) {
+            //Caso acordado que em cenario de array vazio seja retornado 200, retirar if
+            return ResponseEntity.noContent().build();
+        } else {
+            List<ItemListPessoaDTO> pessoaListDTO = itemListPessoaMapper.modelListToDtoList(pessoas);
+            return ResponseEntity.ok(pessoaListDTO);
+        }
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ResumoPessoaDTO> buscarPorId(@PathVariable Long id) {
 
-        Pessoa pessoa = pessoaService.buscarPessoa(id);
-        ResumoPessoaDTO resumoIdPessoaDTO = resumoPessoaMapper.modelToDto(pessoa);
+        Optional<Pessoa> pessoa = pessoaService.buscarPessoa(id);
+        if (!pessoa.isPresent()) {
+            return ResponseEntity.noContent().build();
+        } else {
+            ResumoPessoaDTO resumoPessoaDTO = resumoPessoaMapper.modelToDto(pessoa.get());
+            return ResponseEntity.ok(resumoPessoaDTO);
+        }
 
-        return ResponseEntity.ok(resumoIdPessoaDTO);
     }
 }
