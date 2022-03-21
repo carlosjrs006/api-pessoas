@@ -3,6 +3,7 @@ package br.com.serasa.apipessoas.services;
 import br.com.serasa.apipessoas.models.Pessoa;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface PessoaService {
 
@@ -10,6 +11,6 @@ public interface PessoaService {
 
      List<Pessoa> listarPessoas();
 
-     Pessoa buscarPessoa(Long id);
+     Optional<Pessoa> buscarPessoa(Long id);
 
 }
