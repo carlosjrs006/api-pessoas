@@ -10,5 +10,5 @@ public class ItemListPessoaDTO {
     private String cidade;
     private String estado;
     private String scoreDescricao;
-    private int score;
+
 }

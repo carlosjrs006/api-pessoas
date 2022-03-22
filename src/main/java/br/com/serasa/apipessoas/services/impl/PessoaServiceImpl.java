@@ -39,11 +39,11 @@ public class PessoaServiceImpl implements PessoaService {
 
         if (score >= 0 && score <= 200) {
             scoreDescricao = Score.INSUFICIENTE.getDescricao();
-        } else if (score <= 500) {
+        } else if (score >=201 && score <= 500) {
             scoreDescricao = Score.INACEITAVEL.getDescricao();
-        } else if (score <= 700) {
+        } else if (score >=501 && score <= 700) {
             scoreDescricao = Score.ACEITAVEL.getDescricao();
-        } else if (score <= 1000) {
+        } else if (score >=701 && score <= 1000) {
             scoreDescricao = Score.RECOMENDAVEL.getDescricao();
         } else {
             throw new NegocioException("Valor do score informado não esta dentro da faixa.");

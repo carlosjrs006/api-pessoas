@@ -13,5 +13,4 @@ public class ResumoPessoaDTO {
     private int idade;
     private String scoreDescricao;
 
-    private int score;
 }
