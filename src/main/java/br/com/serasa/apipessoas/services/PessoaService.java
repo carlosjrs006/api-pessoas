@@ -13,4 +13,6 @@ public interface PessoaService {
 
      Optional<Pessoa> buscarPessoa(Long id);
 
+     String recuperarScoreDescricao(int score);
+
 }
