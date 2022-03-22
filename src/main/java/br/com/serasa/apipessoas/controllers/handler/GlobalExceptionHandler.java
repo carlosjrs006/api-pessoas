@@ -2,6 +2,7 @@ package br.com.serasa.apipessoas.controllers.handler;
 
 import br.com.serasa.apipessoas.dtos.models.Erro;
 import br.com.serasa.apipessoas.dtos.models.ParametroInvalido;
+import br.com.serasa.apipessoas.exceptions.NegocioException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -55,4 +56,14 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         return new ResponseEntity<>(erro, HttpStatus.INTERNAL_SERVER_ERROR);
     }
+
+    @ExceptionHandler(NegocioException.class)
+    public final ResponseEntity<Erro> handleNegocioException(NegocioException ex) {
+
+        Erro erro = new Erro(ex.getMessage());
+
+        return new ResponseEntity<>(erro, HttpStatus.BAD_REQUEST);
+    }
+
+
 }

@@ -52,6 +52,10 @@ public class PessoaController {
             return ResponseEntity.noContent().build();
         } else {
             List<ItemListPessoaDTO> pessoaListDTO = itemListPessoaMapper.modelListToDtoList(pessoas);
+            for (int i = 0; i < pessoas.size(); i++) {
+                var scoreDescricao = pessoaService.recuperarScoreDescricao(pessoas.get(i).getScore());
+                pessoaListDTO.get(i).setScoreDescricao(scoreDescricao);
+            }
             return ResponseEntity.ok(pessoaListDTO);
         }
     }
@@ -63,7 +67,9 @@ public class PessoaController {
         if (!pessoa.isPresent()) {
             return ResponseEntity.noContent().build();
         } else {
+            var scoreDescricao = pessoaService.recuperarScoreDescricao(pessoa.get().getScore());
             ResumoPessoaDTO resumoPessoaDTO = resumoPessoaMapper.modelToDto(pessoa.get());
+            resumoPessoaDTO.setScoreDescricao(scoreDescricao);
             return ResponseEntity.ok(resumoPessoaDTO);
         }
 
