@@ -10,7 +10,6 @@
   <li>H2 database</li>
   <li>Model Mapper</li>
   <li>Swagger</li>
-  <li>Checkstyle</li>
   <li>Postman</li>
 </ul>
 
@@ -20,6 +19,7 @@
   <li>Clonar repositorio</br><p>- git clone https://github.com/carlosjrs006/api-pessoas.git</p></li>
   <li>Entrar na pasta do projeto</br> <p>- cd backend</p></li>
   <li>Excutar o projeto</br> <p>- ./mvnw spring-boot:run</p></li> 
+  <li>Excutar o swagger<br/> <p>http://localhost:8080/swagger-ui.html</p></li>
 </ol>
 
 <h1>Informações Pessoais</h1>
