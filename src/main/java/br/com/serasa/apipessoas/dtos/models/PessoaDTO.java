@@ -2,7 +2,7 @@ package br.com.serasa.apipessoas.dtos.models;
 
 import lombok.Data;
 
-import java.io.Serializable;
+
 
 
 @Data

@@ -1,6 +1,5 @@
 package br.com.serasa.apipessoas.dtos.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.Setter;
 

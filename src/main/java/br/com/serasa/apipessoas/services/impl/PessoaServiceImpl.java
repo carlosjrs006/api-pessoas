@@ -18,6 +18,11 @@ public class PessoaServiceImpl implements PessoaService {
     @Autowired
     private PessoaRepository repository;
 
+
+    public PessoaServiceImpl(PessoaRepository repository) {
+        this.repository = repository;
+    }
+
     @Override
     public Pessoa criarPessoa(Pessoa pessoa) {
         return repository.save(pessoa);
